@@ -7,7 +7,11 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <WalletKitProvider>
+    <WalletKitProvider
+      enableUnsafeBurner={false}
+      // Use 'walletConfigs' or omit for default (Slush, Sui Wallet, etc.)
+      // If you want custom, add walletConfigs array (advanced)
+    >
       <div
         style={{
           minHeight: '100vh',

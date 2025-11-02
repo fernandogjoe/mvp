@@ -8,7 +8,7 @@ export default function WalletConnect() {
     return (
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <button
-          onClick={() => connect('Slush')} // ← THIS IS IT
+          onClick={() => connect('Slush')}
           style={{
             padding: '14px 28px',
             background: 'linear-gradient(90deg, #00ff88, #00d1ff)',
@@ -19,10 +19,7 @@ export default function WalletConnect() {
             cursor: 'pointer',
             fontSize: '1.2rem',
             boxShadow: '0 0 15px rgba(0, 255, 136, 0.6)',
-            transition: 'all 0.3s',
           }}
-          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-          onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
         >
           Connect with Slush
         </button>
@@ -30,9 +27,9 @@ export default function WalletConnect() {
     )
   }
 
-  const address = currentWallet.accounts?.[0]?.address
-  if (!address) return <p style={{ color: 'orange' }}>No address</p>
-
+  // Safe address extraction
+  const accounts = currentWallet.accounts || []
+  const address = accounts.length > 0 ? accounts[0].address : 'No address found'
   return (
     <div style={{ textAlign: 'center', marginTop: '20px' }}>
       <p style={{ color: '#00ff88', fontWeight: 'bold', fontSize: '1.2rem' }}>
